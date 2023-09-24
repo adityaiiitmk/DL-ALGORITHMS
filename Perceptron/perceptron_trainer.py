@@ -15,7 +15,3 @@ if __name__ == "__main__":
     predictions = perceptron.predict(test_data)
 
     print("Predictions :", predictions)
-    
-
-
-
