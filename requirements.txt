@@ -2,3 +2,5 @@ pandas
 sklearn
 scikit-learn
 tqdm
+
+-e .
