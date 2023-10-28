@@ -74,3 +74,8 @@ print(f'Accuracy: {round(accuracy*100,2)}')
 print("--------------------------------------\n")
 
 
+results = model.predict(test_x)
+results = np.argmax(results,axis = 1)
+results = pd.Series(results,name="Predicted Label")
+submission = pd.concat([pd.Series(y_test,name = "Actual Label"),results],axis = 1)
+submission.to_csv("CNN/results/MNIST-CNN.csv",index=False)
