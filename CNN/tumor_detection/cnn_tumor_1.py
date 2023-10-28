@@ -97,11 +97,4 @@ plt.legend(loc='upper right')
 plt.savefig('CNN/sample/results/tumor_loss_plot.png')
 
 
-# print("--------------------------------------\n")
-# print("Model Evalutaion Phase.\n")
-# loss,accuracy= model.evaluate(val_ds)
-# print(f'Accuracy: {round(accuracy*100,2)}')
-# print("--------------------------------------\n")
-
-
               
