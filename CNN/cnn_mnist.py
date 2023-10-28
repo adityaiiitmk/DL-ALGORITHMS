@@ -1,7 +1,7 @@
 import tensorflow as tf
-from numpy import unique, argmax
-import numpy as np
+from numpy import argmax
 import pandas as pd
+import matplotlib.pyplot as plt
 
 
 (train_x, y_train), (test_x, y_test) = tf.keras.datasets.mnist.load_data()
@@ -63,9 +63,30 @@ model.compile(optimizer='adam',
 
 print("--------------------------------------\n")
 print("Training Started.\n")
-history = model.fit(train_x, y_train, epochs=10, batch_size = 128, validation_split = 0.2)
+history = model.fit(train_x, y_train, epochs=5, batch_size = 128, validation_split = 0.2)
 print("Training Finished.\n")
 print("--------------------------------------\n")
+
+# Plot and save accuracy
+plt.plot(history.history['accuracy'], label='accuracy')
+plt.plot(history.history['val_accuracy'], label = 'val_accuracy')
+plt.xlabel('Epoch')
+plt.ylabel('Accuracy')
+plt.ylim([0, 1])
+plt.legend(loc='lower right')
+plt.savefig('CNN/results/mnist_results/mnist_accuracy_plot.png')
+
+# Clear the previous plot
+plt.clf()
+
+# Plot and save loss
+plt.plot(history.history['loss'], label='loss')
+plt.plot(history.history['val_loss'], label = 'val_loss')
+plt.xlabel('Epoch')
+plt.ylabel('Loss')
+plt.legend(loc='upper right')
+plt.savefig('CNN/results/mnist_results/mnist_loss_plot.png')
+
 
 print("--------------------------------------\n")
 print("Model Evalutaion Phase.\n")
@@ -74,8 +95,11 @@ print(f'Accuracy: {round(accuracy*100,2)}')
 print("--------------------------------------\n")
 
 
+print("--------------------------------------\n")
+print("Model Prediction.\n")
 results = model.predict(test_x)
-results = np.argmax(results,axis = 1)
+results = argmax(results,axis = 1)
 results = pd.Series(results,name="Predicted Label")
 submission = pd.concat([pd.Series(y_test,name = "Actual Label"),results],axis = 1)
-submission.to_csv("CNN/results/MNIST-CNN.csv",index=False)
+submission.to_csv("CNN/results/mnist_results/MNIST-CNN.csv",index=False)
+print("--------------------------------------\n")
