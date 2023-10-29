@@ -57,8 +57,15 @@ print("--------------------------------------\n")
 
 print("--------------------------------------\n")
 print("Normalaising the Dataset. \n")
+
+# x_train=x_train.astype('float')/255
+# x_test=x_test.astype('float')/255 
+
+# Same step above is implemented using tensorflow functions.
+
 x_train=tf.keras.utils.normalize(x_train,axis=1)
 x_test=tf.keras.utils.normalize(x_test,axis=1)
+
 print("--------------------------------------\n")
 
 
