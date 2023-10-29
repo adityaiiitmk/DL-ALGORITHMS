@@ -83,7 +83,7 @@ plt.xlabel('Epoch')
 plt.ylabel('Accuracy')
 plt.ylim([0, 1])
 plt.legend(loc='lower right')
-plt.savefig('CNN/sample/results/tumor_accuracy_plot.png')
+plt.savefig('CNN/tumor_detection/results/tumor_accuracy_plot.png')
 
 # Clear the previous plot
 plt.clf()
@@ -94,7 +94,7 @@ plt.plot(history.epoch,history.history['val_loss'], label = 'val_loss')
 plt.xlabel('Epoch')
 plt.ylabel('Loss')
 plt.legend(loc='upper right')
-plt.savefig('CNN/sample/results/tumor_loss_plot.png')
+plt.savefig('CNN/tumor_detection/results/tumor_loss_plot.png')
 
 
               

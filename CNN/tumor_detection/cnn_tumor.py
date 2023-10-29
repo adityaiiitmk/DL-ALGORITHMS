@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 from tqdm import tqdm
 
-image_dir='artifacts/tumordata/archive'
+image_dir='artifacts/tumordata/'
 no_tumor_images=os.listdir(image_dir+ '/no')
 yes_tumor_images=os.listdir(image_dir+ '/yes')
 print("--------------------------------------\n")
@@ -94,7 +94,7 @@ plt.xlabel('Epoch')
 plt.ylabel('Accuracy')
 plt.ylim([0, 1])
 plt.legend(loc='lower right')
-plt.savefig('CNN/sample/results/tumor_sample_accuracy_plot.png')
+plt.savefig('CNN/tumor_detection/results/tumor_sample_accuracy_plot.png')
 
 # Clear the previous plot
 plt.clf()
@@ -105,7 +105,7 @@ plt.plot(history.epoch,history.history['val_loss'], label = 'val_loss')
 plt.xlabel('Epoch')
 plt.ylabel('Loss')
 plt.legend(loc='upper right')
-plt.savefig('CNN/sample/results/tumor_sample_loss_plot.png')
+plt.savefig('CNN/tumor_detection/results/tumor_sample_loss_plot.png')
 
 
 print("--------------------------------------\n")
@@ -134,9 +134,9 @@ def make_prediction(img,model):
     else:
         print("No Tumor")
         
-make_prediction('artifacts/tumordata/archive/yes/y24.jpg',model)
+make_prediction('artifacts/cleanedbrainimage/train/yes/y6.jpg',model)
 print("--------------------------------------\n")
-make_prediction('artifacts/tumordata/archive/no/no1.jpg',model)
+make_prediction('artifacts/cleanedbrainimage/train/no/no1.jpg',model)
 print("--------------------------------------\n")
 
 
