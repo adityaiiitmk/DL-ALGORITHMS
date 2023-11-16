@@ -5,4 +5,6 @@ tqdm
 imageio
 seaborn
 opencv-python
+nltk
+
 -e .
