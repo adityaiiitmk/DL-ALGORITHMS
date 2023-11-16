@@ -7,10 +7,10 @@ import tensorflow as tf
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
 
-def getGloveEmbeddings(glovefilepath):
+def getGloveEmbeddings(glovefolderpath):
     print("---------------------- Getting Glove Embeddings -------------------------\n")
     embeddings_dictionary = dict()
-    glove_file = open(glovefilepath, encoding="utf8")
+    glove_file = open(f"{glovefolderpath}glove.6B.50d.txt", encoding="utf8")
     for line in glove_file:
         records = line.split()
         word = records[0]
@@ -21,7 +21,7 @@ def getGloveEmbeddings(glovefilepath):
     return embeddings_dictionary
 
 
-glove_file='artifacts/LSTM/glove.6B.50d.txt'
+glove_folder='REPLACE_WITH_GLOVE_FOLDER_PATH'
 maxlen = 50
 print("---------------------- Downloading Dataset -------------------------\n")
 
@@ -44,7 +44,7 @@ X_test = tf.keras.preprocessing.sequence.pad_sequences(X_test, padding='post', m
 print("----------------------  -------------------------\n")
 
 
-embeddings_dictionary=getGloveEmbeddings(glove_file)
+embeddings_dictionary=getGloveEmbeddings(glove_folder)
 embedding_matrix = zeros((vocab_size, maxlen))
 for word, index in tokeniser.word_index.items():
     embedding_vector = embeddings_dictionary.get(word)
