@@ -21,7 +21,7 @@ def getGloveEmbeddings(glovefolderpath):
     return embeddings_dictionary
 
 
-glove_folder='artifacts/LSTM/'
+glove_folder='REPLACE_WITH_GLOVE_FOLDER_PATH'
 maxlen = 100
 print("---------------------- Downloading Dataset -------------------------\n")
 
