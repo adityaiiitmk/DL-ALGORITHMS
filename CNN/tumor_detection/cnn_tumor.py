@@ -125,12 +125,15 @@ y_pred = (y_pred > 0.5).astype(int)
 print('classification Report\n',classification_report(y_test,y_pred))
 print("--------------------------------------\n")
 
+model.save('CNN/tumor_detection/results/model/cnn_tumor.h5')
 
 print("--------------------------------------\n")
 print("Model Prediction.\n")
 
+model = tf.keras.models.load_model('CNN/tumor_detection/results/model/cnn_tumor.h5')
+
 def make_prediction(img,model):
-    img=cv2.imread(img)
+    # img=cv2.imread(img)
     img=Image.fromarray(img)
     img=img.resize((128,128))
     img=np.array(img)
@@ -140,10 +143,11 @@ def make_prediction(img,model):
         print("Tumor Detected")
     else:
         print("No Tumor")
+    return res
         
-make_prediction('artifacts/cleanedbrainimage/train/yes/y6.jpg',model)
+make_prediction(cv2.imread('artifacts/cleanedbrainimage/train/yes/y6.jpg'),model)
 print("--------------------------------------\n")
-make_prediction('artifacts/cleanedbrainimage/train/no/no1.jpg',model)
+make_prediction(cv2.imread('artifacts/cleanedbrainimage/train/no/no1.jpg'),model)
 print("--------------------------------------\n")
 
 

@@ -97,4 +97,3 @@ plt.legend(loc='upper right')
 plt.savefig('CNN/tumor_detection/results/tumor_loss_plot.png')
 
 
-              
