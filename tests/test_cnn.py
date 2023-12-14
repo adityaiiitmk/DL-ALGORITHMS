@@ -10,7 +10,6 @@ def sample_model():
 
 @pytest.fixture
 def sample_tumor_image():
-    # Assuming you have a sample tumor image for testing
     img_path = 'tests/samples/y7.jpg'
     img = cv2.imread(img_path)
     return img
