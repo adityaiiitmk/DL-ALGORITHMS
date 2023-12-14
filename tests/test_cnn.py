@@ -29,3 +29,5 @@ def test_non_make_prediction (sample_model, sample_no_tumor_image):
 def test_non_make_prediction (sample_model, sample_tumor_image):
     result = make_prediction(sample_tumor_image, sample_model)
     assert result == 1
+
+
