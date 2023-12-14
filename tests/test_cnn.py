@@ -2,7 +2,6 @@ import pytest,cv2
 import tensorflow as tf
 from CNN.tumor_detection.cnn_tumor import make_prediction
 
-# Assuming your script file is saved as script_file.py, replace it with your actual file name
 @pytest.fixture
 def sample_model():
     model_path = 'CNN/tumor_detection/results/model/cnn_tumor.h5'
