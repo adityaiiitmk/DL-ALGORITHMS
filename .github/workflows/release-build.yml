@@ -43,5 +43,5 @@ jobs:
     - name: Upload Package to Artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: DL-ALGORITHMS-*.tar.gz
+        name: DL-ALGORITHMS.tar.gz
         path: ./dist
