@@ -4,8 +4,6 @@
 name: DL-PR-Chceks
 
 on:
-  # push:
-  #   branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 

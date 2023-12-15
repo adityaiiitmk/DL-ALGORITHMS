@@ -1,0 +1,47 @@
+name: Release Workflow
+
+
+on:
+    workflow_dispatch:
+    push:
+      branches:
+        - 'release**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+        matrix:
+          python-version: ["3.10"]
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+    - name: Set Up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+        cache: 'pip'
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Extract Version Number
+      id: extract_version
+      run: echo "{name}={version}::$(echo ${GITHUB_REF#refs/heads/release_})" >> $GITHUB_OUTPUT
+
+    - name: Build Python Package
+      run: python setup.py sdist bdist_wheel
+
+    # - name: Rename Package with Version
+    #   run: |
+    #     mv ./dist/DL-ALGORITHMS-*.tar.gz "./dist/DL-ALGORITHMS-${version}.tar.gz"
+    #     mv ./dist/DL-ALGORITHMS-*.whl "./dist/DL-ALGORITHMS-${version}-py3-none-any.whl"
+
+    - name: Upload Package to Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: DL-ALGORITHMS.tar.gz
+        path: ./dist
