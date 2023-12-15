@@ -30,7 +30,7 @@ jobs:
 
     - name: Extract Version Number
       id: extract_version
-      run: echo "::set-output name=version::$(echo ${GITHUB_REF#refs/heads/release_})"
+      run: echo "{name}={version}::$(echo ${GITHUB_REF#refs/heads/release_})" >> $GITHUB_OUTPUT
 
     - name: Build Python Package
       run: python setup.py sdist bdist_wheel
