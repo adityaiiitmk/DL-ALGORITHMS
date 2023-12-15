@@ -1,4 +1,7 @@
-name: Release Workflow
+# Build and publish package 
+
+name: dl-aglo-build-auto
+run-name: Build DL-ALgorithms
 
 
 on:
