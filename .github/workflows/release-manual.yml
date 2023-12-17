@@ -1,7 +1,7 @@
 # Build and publish package 
 
 name: dl-aglo-build-manual
-run-name: Build & Deploy DL-ALgorithms (v${{ inputs.appversion }}) to ${{ github.event.inputs.environment }}
+run-name: Build & Deploy DL-Algorithms (v${{ inputs.appversion }}) to ${{ github.event.inputs.environment }}
 
 on:
   workflow_dispatch:
