@@ -17,6 +17,3 @@ pred = perceptron.predict(X_test)
 
 print(f"Accuracy : {accuracy_score(pred, y_test)}")
 report = classification_report(pred, y_test, digits=2)
-
-print(report)
-print(f"Predictions :{pred}")
