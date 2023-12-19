@@ -35,5 +35,5 @@ def test_backpropagation_fit(sample_backpropagation):
     y = np.array([0, 1, 0])
     sample_backpropagation.fit(X, y)
     assert sample_backpropagation.weights.shape == (2,)  
-    assert sample_backpropagation.bias >= 0
+    assert sample_backpropagation.bias >= 0.0
 
